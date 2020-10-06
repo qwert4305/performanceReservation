@@ -26,7 +26,7 @@ public class LoginController {
 		//MemberDTO dto = new MemberDTO();
 		//System.out.println(dao.selectid((dto)).toString());
 
-		return mav;
+		return mav;  
 	}
 
 	@RequestMapping(value = "/member/login.do", method = {RequestMethod.POST,RequestMethod.GET})
@@ -42,7 +42,6 @@ public class LoginController {
 		// 세션 검사 후 로그인한 회원정보 memberInfo에 저장 , allinfo로 if 돌리기
 		if (allinfo != null && allinfo.getMem_id() != null) {
 			HttpSession session = request.getSession();
-			// session = request.getSession();
 			
 			session.setAttribute("isLogOn", true);
 			session.setAttribute("memberInfo", allinfo);
@@ -62,27 +61,7 @@ public class LoginController {
 		return mav;
 	}
 
-//	@RequestMapping("/sessiontest")
-//	public ModelAndView sessiontest(@RequestParam("userid") String id, @RequestParam("userpw") String pw, HttpServletRequest request) {
-//		
-//		ModelAndView mav = new ModelAndView("sessiontest");
-//		MemberDTO logdto = new MemberDTO();
-//		//MemberDTO iddto = new MemberDTO(); 
-//		logdto.setMem_id(id);
-//		logdto.setMem_pw(pw);
-//		logdto = dao.selectid_pw(logdto);
-//		
-//		if(logdto != null && logdto.getMem_id() != null) {
-//			HttpSession session = request.getSession();
-//			//session = request.getSession();
-//			System.out.println(logdto.toString());
-//			session.setAttribute("isLogOn", true);
-//			session.setAttribute("memberInfo", logdto);
-//		}
-//		
-//		return mav;
-//	}
-//	
+
 	@RequestMapping(value = "/logout.do", method = {RequestMethod.POST, RequestMethod.GET})
 	public ModelAndView logout(HttpServletRequest request) {
 		ModelAndView mav = new ModelAndView("redirect:/main/main.do");

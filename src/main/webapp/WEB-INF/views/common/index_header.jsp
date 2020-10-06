@@ -86,9 +86,18 @@
              
             </a>
            </div>
+           <c:choose>
+           <c:when test="${sessionScope.rowno==null || empty sessionScope.rowno || empty sessionScope.memberInfo || sessionScope.memberInfo==null}">
+           <a href="#" id="myticket" Onclick="alert('티켓 예매 후 이용 가능합니다.')">
+           <span>MY티켓</span>        
+           </a>
+           </c:when>
+           <c:otherwise>
            <a href="${path}/myticket/Myticket" id="myticket">
            <span>MY티켓</span>
            </a>
+           </c:otherwise>
+           </c:choose>
            <a href="#" id="global">
            <span>GLOBAL</span>
            </a>

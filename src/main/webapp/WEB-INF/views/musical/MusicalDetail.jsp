@@ -171,9 +171,20 @@
             </article>
             <article id="booking_article">
                 <div id="booking">
-                    <a href="${path}/reservation/date.do?detail_id=${all.musical_detail_id}&genre=musical">
-                    <div id="booking_1">예매하기</div>
-                    </a>
+                   <c:choose>
+						<c:when
+							test="${sessionScope.memberInfo==null || empty sessionScope.memberInfo }">
+						<a href="#" onClick="alert('로그인을 해주세요.')">
+							<div id="booking_1">예매하기</div>
+						</a>
+                        </c:when>
+						<c:otherwise>
+							<a
+								href="${path}/reservation/date.do?detail_id=${all.musical_detail_id}&genre=${musical}">
+								<div id="booking_1">예매하기</div>
+							</a>
+						</c:otherwise>
+					</c:choose>
                     <a href="#">
                     <div id="booking_2">BOOKING</div>
                     </a>
